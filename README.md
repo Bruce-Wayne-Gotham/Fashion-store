@@ -39,9 +39,9 @@ Myntra and AJIO products load AI images from `images/ai/`. Until a file exists, 
 | Provider | Secret (Settings → Secrets and variables → Actions) | Notes |
 | --- | --- | --- |
 | `huggingface` | `HF_TOKEN` (free at huggingface.co/settings/tokens, "Make calls to Inference Providers" permission) | FLUX.1 [schnell]. Free monthly credits. |
-| `pollinations` | `POLLINATIONS_API_KEY` *(optional, from enter.pollinations.ai)* | Free. Works without a key, but slower and less reliable. |
+| `pollinations` | `POLLINATIONS_API_KEY` *(from enter.pollinations.ai)* | Free. Without a key it still runs if chosen explicitly, but images are watermarked and often ignore the prompt, so they aren't fit for the site. |
 | `gemini` | `GEMINI_API_KEY` | Requires billing on the Google project. |
-| `auto` *(default)* | n/a | Hugging Face if `HF_TOKEN` is set, falling back to Pollinations per image. |
+| `auto` *(default)* | n/a | Hugging Face if `HF_TOKEN` is set, then Pollinations if `POLLINATIONS_API_KEY` is set. |
 
 Workflow fields: **names** limits the run to specific images (e.g. `wrap-dress`). **force** regenerates existing images.
 

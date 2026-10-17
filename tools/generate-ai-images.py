@@ -7,7 +7,8 @@ Providers (pick with --provider, default "auto"):
                (enter.pollinations.ai), otherwise the keyless endpoint.
   gemini       Google Gemini image model. Needs GEMINI_API_KEY with billing.
   auto         Hugging Face if HF_TOKEN is set, falling back to Pollinations
-               for any image that fails.
+               for any image that fails (only with POLLINATIONS_API_KEY — the
+               keyless tier watermarks images and ignores product-only prompts).
 
 Setup:
     pip install huggingface_hub pillow          # + google-genai for gemini
@@ -121,7 +122,12 @@ PROVIDERS = {"huggingface": huggingface, "pollinations": pollinations, "gemini":
 def provider_chain(choice):
     if choice != "auto":
         return [choice]
-    return (["huggingface"] if os.environ.get("HF_TOKEN") else []) + ["pollinations"]
+    chain = (["huggingface"] if os.environ.get("HF_TOKEN") else []) + (
+        ["pollinations"] if os.environ.get("POLLINATIONS_API_KEY") else []
+    )
+    if not chain:
+        sys.exit("No image provider configured: add an HF_TOKEN (or POLLINATIONS_API_KEY) secret.")
+    return chain
 
 
 def main():
