@@ -1,7 +1,10 @@
 name: Generate AI images
 
 # Run from the Actions tab → "Generate AI images" → Run workflow.
-# Needs a repository secret named GEMINI_API_KEY (Settings → Secrets and variables → Actions).
+# Optional repository secrets (Settings → Secrets and variables → Actions):
+#   HF_TOKEN              Hugging Face token (free) — tried first
+#   POLLINATIONS_API_KEY  Pollinations key — used for the fallback if set
+#   GEMINI_API_KEY        only for provider "gemini" (needs billing)
 on:
   workflow_dispatch:
     inputs:
@@ -13,10 +16,11 @@ on:
         description: "Regenerate images that already exist"
         type: boolean
         default: false
-      model:
-        description: "Gemini image model (blank = script default)"
-        required: false
-        default: ""
+      provider:
+        description: "Image provider"
+        type: choice
+        options: [auto, huggingface, pollinations, gemini]
+        default: auto
 
 permissions:
   contents: write
@@ -35,22 +39,19 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install google-genai
+      - run: pip install huggingface_hub pillow google-genai
 
       - name: Generate images
         env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NAMES: ${{ inputs.names }}
           FORCE: ${{ inputs.force }}
-          MODEL: ${{ inputs.model }}
+          PROVIDER: ${{ inputs.provider }}
         run: |
-          if [ -z "$GEMINI_API_KEY" ]; then
-            echo "::error::Add a repository secret named GEMINI_API_KEY first."
-            exit 1
-          fi
-          args=()
+          args=(--provider "${PROVIDER:-auto}")
           [ "$FORCE" = "true" ] && args+=(--force)
-          [ -n "$MODEL" ] && args+=(--model "$MODEL")
           # shellcheck disable=SC2086
           python3 tools/generate-ai-images.py "${args[@]}" $NAMES
 

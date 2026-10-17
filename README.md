@@ -30,32 +30,29 @@ Add or remove products by copying an entry in `PRODUCTS`. `store` must be `myntr
 
 All outbound links open in a new tab with `rel="sponsored noopener noreferrer"`.
 
-## AI product images (Myntra & AJIO)
+## AI product images
 
-Myntra and AJIO products load AI images from `images/ai/`. Until those files exist, each card shows its bundled illustration (`art` in `products.js`). Amazon products keep illustrations. Swap in Amazon's own product photos (SiteStripe / PA-API) rather than AI images, because Amazon Associates requires them.
+Myntra and AJIO products load AI images from `images/ai/`. Until a file exists, the card shows its bundled illustration (`art` in `products.js`). Prompts live in `tools/ai-image-prompts.json`.
 
-**Option A: AI Studio website (no code)**
-1. Open [aistudio.google.com](https://aistudio.google.com) and choose an image-generation model.
-2. For each entry in `tools/ai-image-prompts.json`, paste the item prompt followed by the `style` line.
-3. Download each result as `images/ai/<name>.png` (e.g. `images/ai/denim-jacket.png`).
+**Generate them with GitHub Actions:** open the **Actions** tab, choose **Generate AI images**, then **Run workflow**. New images are committed to `images/ai/` and the site redeploys automatically.
 
-**Option B: script (all 8 in one go)**
+| Provider | Secret (Settings → Secrets and variables → Actions) | Notes |
+| --- | --- | --- |
+| `huggingface` | `HF_TOKEN` (free at huggingface.co/settings/tokens, "Make calls to Inference Providers" permission) | FLUX.1 [schnell]. Free monthly credits. |
+| `pollinations` | `POLLINATIONS_API_KEY` *(optional, from enter.pollinations.ai)* | Free. Works without a key, but slower and less reliable. |
+| `gemini` | `GEMINI_API_KEY` | Requires billing on the Google project. |
+| `auto` *(default)* | n/a | Hugging Face if `HF_TOKEN` is set, falling back to Pollinations per image. |
+
+Workflow fields: **names** limits the run to specific images (e.g. `wrap-dress`). **force** regenerates existing images.
+
+Run it locally instead:
 ```bash
-pip install google-genai
-export GEMINI_API_KEY="your key from https://aistudio.google.com/apikey"
-python3 tools/generate-ai-images.py                       # creates missing images
-python3 tools/generate-ai-images.py wrap-dress            # redo one you don't like
-python3 tools/generate-ai-images.py --model <newer-model> # pick a newer image model
+pip install huggingface_hub pillow
+export HF_TOKEN=...          # optional
+python3 tools/generate-ai-images.py [--provider pollinations] [names...]
 ```
 
-Then commit the `images/ai/` folder. Never commit your API key.
-
-**Option C: GitHub Actions (key stays in GitHub)**
-1. Repo **Settings → Secrets and variables → Actions → New repository secret**: name `GEMINI_API_KEY`, value = your key.
-2. **Actions** tab → **Generate AI images** → **Run workflow**. Leave the fields blank to create all missing images. Optionally list specific names, tick "force" to redo them, or set a newer model.
-3. The workflow commits the new images to `images/ai/` on the branch it ran on.
-
-Tip: AI images won't exactly match the item being sold. Make sure each picture is close to the real product so shoppers aren't surprised.
+Amazon products keep illustrations. Use Amazon's own product photos for those (Associates rules). AI images won't exactly match the real item, so make sure each picture is close to the product being sold.
 
 ## Run locally
 
