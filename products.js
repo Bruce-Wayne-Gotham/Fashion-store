@@ -8,7 +8,9 @@
  *     It is appended automatically to every amazon.in link that lacks a tag.
  *  3. PRODUCTS: paste the affiliate deep link you generated for each product
  *     (Amazon SiteStripe, Myntra/Ajio via EarnKaro, Cuelinks, Admitad, etc.)
- *     into `url`, and the product photo URL into `image`.
+ *     into `url`. `image` can be a product photo URL from the store, or one of
+ *     the bundled illustrations in images/ (used by default so the page always
+ *     has visuals, even offline).
  *
  *  Anything still pointing at a plain store URL will work, it just won't earn.
  */
@@ -46,7 +48,7 @@ window.AFFILIATE_CONFIG = {
       price: 1199,
       mrp: 2399,
       badge: "Bestseller",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=900&q=80",
+      image: "images/linen-shirt.svg",
       url: "https://www.myntra.com/shirts",
     },
     {
@@ -57,7 +59,7 @@ window.AFFILIATE_CONFIG = {
       price: 1349,
       mrp: 2999,
       badge: "New",
-      image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=900&q=80",
+      image: "images/wrap-dress.svg",
       url: "https://www.myntra.com/dresses",
     },
     {
@@ -68,7 +70,7 @@ window.AFFILIATE_CONFIG = {
       price: 3499,
       mrp: 6999,
       badge: "Deal",
-      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&q=80",
+      image: "images/running-sneakers.svg",
       url: "https://www.amazon.in/s?k=puma+running+shoes",
     },
     {
@@ -79,7 +81,7 @@ window.AFFILIATE_CONFIG = {
       price: 1899,
       mrp: 4250,
       badge: "",
-      image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=900&q=80",
+      image: "images/leather-tote.svg",
       url: "https://www.amazon.in/s?k=leather+tote+bag",
     },
     {
@@ -90,7 +92,7 @@ window.AFFILIATE_CONFIG = {
       price: 2799,
       mrp: 4599,
       badge: "Trending",
-      image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=900&q=80",
+      image: "images/denim-jacket.svg",
       url: "https://www.ajio.com/s/denim-jackets",
     },
     {
@@ -101,7 +103,7 @@ window.AFFILIATE_CONFIG = {
       price: 1599,
       mrp: 3199,
       badge: "New",
-      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=80",
+      image: "images/knit-coord.svg",
       url: "https://www.ajio.com/s/co-ords",
     },
     {
@@ -112,7 +114,7 @@ window.AFFILIATE_CONFIG = {
       price: 6995,
       mrp: 10995,
       badge: "",
-      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=900&q=80",
+      image: "images/chronograph-watch.svg",
       url: "https://www.amazon.in/s?k=fossil+chronograph",
     },
     {
@@ -123,7 +125,7 @@ window.AFFILIATE_CONFIG = {
       price: 899,
       mrp: 1999,
       badge: "Value",
-      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=80",
+      image: "images/crew-tees.svg",
       url: "https://www.myntra.com/tshirts",
     },
     {
@@ -134,7 +136,7 @@ window.AFFILIATE_CONFIG = {
       price: 1490,
       mrp: 2490,
       badge: "",
-      image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=900&q=80",
+      image: "images/block-mules.svg",
       url: "https://www.ajio.com/s/women-heels",
     },
     {
@@ -145,7 +147,7 @@ window.AFFILIATE_CONFIG = {
       price: 5590,
       mrp: 7990,
       badge: "Premium",
-      image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=900&q=80",
+      image: "images/aviator-sunglasses.svg",
       url: "https://www.myntra.com/sunglasses",
     },
     {
@@ -156,7 +158,7 @@ window.AFFILIATE_CONFIG = {
       price: 4299,
       mrp: 8999,
       badge: "",
-      image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=900&q=80",
+      image: "images/wool-blazer.svg",
       url: "https://www.amazon.in/s?k=men+blazer",
     },
     {
@@ -167,7 +169,7 @@ window.AFFILIATE_CONFIG = {
       price: 2199,
       mrp: 4399,
       badge: "",
-      image: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=900&q=80",
+      image: "images/satin-skirt.svg",
       url: "https://www.ajio.com/s/skirts",
     },
   ],

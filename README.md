@@ -24,7 +24,7 @@ Everything you need to edit is in **`products.js`**:
 | `AMAZON_TAG` | Your Amazon Associates tracking ID (e.g. `yourname-21`). It's added to every amazon.in link that doesn't already have a `tag`. |
 | `STORES.*.url` | Your store-level affiliate link for Myntra, Amazon and AJIO. |
 | `PRODUCTS[].url` | The affiliate deep link for each product (Amazon SiteStripe, or Myntra/AJIO links from EarnKaro, Cuelinks, Admitad, etc.). |
-| `PRODUCTS[].image` | The product photo URL. Placeholder Unsplash photos are used until you swap them. |
+| `PRODUCTS[].image` | A product photo URL from the store, or a bundled illustration from `images/` (the default). Illustrations ship with the repo so the page always has visuals; regenerate them with `python3 tools/generate-illustrations.py images`. |
 
 Add or remove products by copying an entry in `PRODUCTS`. `store` must be `myntra`, `amazon` or `ajio`; `category` can be anything — the filter chips are generated from it.
 
