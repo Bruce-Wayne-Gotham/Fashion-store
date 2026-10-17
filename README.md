@@ -34,7 +34,7 @@ All outbound links open in a new tab with `rel="sponsored noopener noreferrer"`.
 
 Myntra and AJIO products load AI images from `images/ai/`. Until a file exists, the card shows its bundled illustration (`art` in `products.js`). Prompts live in `tools/ai-image-prompts.json`.
 
-**Generate them with GitHub Actions:** open the **Actions** tab, choose **Generate AI images**, then **Run workflow**. New images are committed to `images/ai/` and the site redeploys automatically.
+**Generate them with GitHub Actions:** open the **Actions** tab, choose **Generate AI images**, then **Run workflow**. New images are committed to `images/ai/`. They go live on the next push, or when you run **Deploy to GitHub Pages** manually, so you can check them first.
 
 | Provider | Secret (Settings → Secrets and variables → Actions) | Notes |
 | --- | --- | --- |
@@ -63,7 +63,7 @@ python3 -m http.server 8000
 
 ## Deploy
 
-The site deploys automatically to GitHub Pages via `.github/workflows/deploy-pages.yml` on every push to the branch, and again after the AI image workflow runs.
+The site deploys automatically to GitHub Pages via `.github/workflows/deploy-pages.yml` on every push to the branch. Commits made by the AI image workflow are not deployed until the next push or a manual run.
 
 **Live URL:** https://bruce-wayne-gotham.github.io/Fashion-store/
 

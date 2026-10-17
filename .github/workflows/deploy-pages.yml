@@ -3,10 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [claude/affiliate-product-page-apple-ui-tuce58]
-  # Pushes made by the image workflow don't trigger `push`, so redeploy after it.
-  workflow_run:
-    workflows: ["Generate AI images"]
-    types: [completed]
+  # Image-workflow commits don't trigger this on purpose: images are reviewed
+  # first, and the next normal push (or a manual run) deploys them.
   workflow_dispatch:
 
 permissions:
