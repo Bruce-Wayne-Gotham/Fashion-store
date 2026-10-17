@@ -66,4 +66,8 @@ python3 -m http.server 8000
 
 ## Deploy
 
-Push to GitHub and enable **Settings → Pages → Deploy from branch** (root). Netlify, Vercel or Cloudflare Pages also work with zero config.
+The site deploys automatically to GitHub Pages via `.github/workflows/deploy-pages.yml` on every push to the branch, and again after the AI image workflow runs.
+
+**Live URL:** https://bruce-wayne-gotham.github.io/Fashion-store/
+
+If the first deploy fails with a Pages "not enabled" error, open **Settings → Pages**, set **Source** to **GitHub Actions**, then re-run the workflow.
