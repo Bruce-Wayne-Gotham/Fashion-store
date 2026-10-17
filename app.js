@@ -58,8 +58,10 @@
     const body = el("div", "card__body");
     body.append(el("span", "card__brand", p.brand), el("h3", "card__title", p.title));
     const price = el("div", "price");
-    price.append(el("span", "price__now", inr.format(p.price)));
-    if (p.mrp > p.price) {
+    price.append(
+      p.price ? el("span", "price__now", inr.format(p.price)) : el("span", "price__ask", `See price on ${store.name}`)
+    );
+    if (p.price && p.mrp > p.price) {
       price.append(
         el("span", "price__mrp", inr.format(p.mrp)),
         el("span", "price__off", `${Math.round((1 - p.price / p.mrp) * 100)}% off`)
@@ -71,7 +73,8 @@
     link.href = affiliateUrl(p.url, p.store);
     link.target = "_blank";
     link.rel = "sponsored noopener noreferrer";
-    link.setAttribute("aria-label", `${p.brand} ${p.title}, ${inr.format(p.price)} — buy on ${store.name}`);
+    const priceLabel = p.price ? `, ${inr.format(p.price)}` : "";
+    link.setAttribute("aria-label", `${p.brand} ${p.title}${priceLabel} — buy on ${store.name}`);
 
     card.append(media, body, link);
     if (canHover && !reduceMotion) attachTilt(card);
@@ -149,8 +152,10 @@
 
   /* ───────── Trending carousel (biggest discount first) ───────── */
   const carousel = $("#carousel");
+  const discount = (p) => (p.price && p.mrp ? p.mrp / p.price : 0);
   [...PRODUCTS]
-    .sort((a, b) => b.mrp / b.price - a.mrp / a.price)
+    .filter((p) => discount(p) > 1)
+    .sort((a, b) => discount(b) - discount(a))
     .slice(0, 8)
     .forEach((p) => carousel.append(productCard(p)));
 

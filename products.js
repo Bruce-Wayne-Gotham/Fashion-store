@@ -42,6 +42,18 @@ window.AFFILIATE_CONFIG = {
 
   PRODUCTS: [
     {
+      title: "Self Design Polo Collar Pure Cotton Slim Fit T-shirt",
+      brand: "Levis",
+      store: "myntra",
+      category: "Men",
+      price: null, // ← add the current price (e.g. 1499) to show it on the card
+      mrp: null,
+      badge: "Editor's pick",
+      image: "images/ai/levis-polo-tee.png",
+      art: "images/levis-polo-tee.svg",
+      url: "https://www.myntra.com/mailers/tshirts/levis/levis-self-design-polo-collar-pure-cotton-slim-fit-t-shirt/32300095/buy?utm_source=ugc_affiliate&utm_medium=social_share_pdp&utm_campaign=1jebh9o1V6wIhcKH&shared=true&affiliate_id=1jebh9o1V6wIhcKH",
+    },
+    {
       title: "Oversized Linen Shirt",
       brand: "Roadster",
       store: "myntra",

@@ -55,8 +55,10 @@ jobs:
           python3 tools/generate-ai-images.py "${args[@]}" $NAMES
 
       - name: Commit new images
+        # Also runs when some images failed, so the ones that worked are kept.
+        if: success() || failure()
         run: |
-          git add images/ai
+          git add -A images/ai 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No new images to commit."
             exit 0

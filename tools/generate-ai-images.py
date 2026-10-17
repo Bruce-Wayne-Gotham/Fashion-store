@@ -50,6 +50,7 @@ def main():
 
     client = genai.Client()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    failed = []
 
     for name, prompt in spec["images"].items():
         out = OUT_DIR / f"{name}.png"
@@ -71,6 +72,7 @@ def main():
             )
         except Exception as err:  # keep going so one failure doesn't stop the batch
             print(f"  failed: {err}")
+            failed.append(name)
             continue
 
         image = next(
@@ -79,9 +81,13 @@ def main():
         )
         if image is None:
             print("  failed: no image returned (try rewording the prompt)")
+            failed.append(name)
             continue
         out.write_bytes(image)
         print(f"  saved {out.relative_to(ROOT)}")
+
+    if failed:
+        sys.exit(f"{len(failed)} image(s) failed: {', '.join(failed)}")
 
 
 if __name__ == "__main__":

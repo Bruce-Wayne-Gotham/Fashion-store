@@ -43,6 +43,14 @@ def tee(p, dx=0, dy=0):
             '<path d="M342 262 Q400 312 458 262" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="10"/></g>')
 
 
+def polo(p):
+    return (tee(p) +
+            '<path d="M342 262 L372 330 L400 290 L428 330 L458 262 L430 256 L400 300 L370 256 Z" fill="#fff" fill-opacity=".9"/>'
+            f'<path d="M400 300 V420" {LINE}/>' +
+            "".join(f'<circle cx="400" cy="{y}" r="6" fill="#fff" fill-opacity=".9"/>' for y in (345, 390)) +
+            '<path d="M180 385 L230 435 M620 385 L570 435" stroke="#fff" stroke-opacity=".5" stroke-width="8"/>')
+
+
 def tees(p):
     # three stacked tees in different colours
     out = ""
@@ -161,6 +169,7 @@ def skirt(p):
 
 # name: (drawer, product main, product dark, bg top, bg bottom)
 ITEMS = {
+    "levis-polo-tee": (polo, "#3a4f7a", "#1c2a48", "#eef1f6", "#d7dde8"),
     "linen-shirt": (shirt, "#e9dcc6", "#c2ab86", "#f7f2ea", "#e8dfd0"),
     "wrap-dress": (dress, "#ff7a94", "#d93a63", "#fff0f3", "#ffd9e1"),
     "running-sneakers": (sneaker, "#3d7bff", "#1c3fbf", "#eef3ff", "#d6e2ff"),
