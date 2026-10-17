@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Gotham Edit — Curated Fashion</title>
+  <meta name="description" content="Handpicked fashion from Myntra, Amazon and AJIO — curated in one place." />
+  <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#top" class="nav__logo" aria-label="Gotham Edit home">Gotham&nbsp;<span>Edit</span></a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#shop">Shop</a>
+        <a href="#trending">Trending</a>
+        <a href="#stores">Stores</a>
+      </nav>
+      <a href="#shop" class="btn btn--small">Shop now</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__copy">
+        <p class="eyebrow reveal">The Autumn Edit · 2026</p>
+        <h1 class="hero__title reveal">Style.<br /><span class="gradient-text">Effortlessly curated.</span></h1>
+        <p class="hero__sub reveal">The best of Myntra, Amazon and AJIO — handpicked, in one beautiful place.</p>
+        <div class="hero__cta reveal">
+          <a href="#shop" class="btn">Explore the edit</a>
+          <a href="#stores" class="link-arrow">Browse stores</a>
+        </div>
+      </div>
+      <div class="hero__stage" aria-hidden="true">
+        <figure class="float float--a" data-depth="0.18"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80" alt="" /></figure>
+        <figure class="float float--b" data-depth="0.32"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" alt="" /></figure>
+        <figure class="float float--c" data-depth="0.1"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900&q=80" alt="" /></figure>
+        <figure class="float float--d" data-depth="0.26"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=700&q=80" alt="" /></figure>
+      </div>
+      <a href="#shop" class="scroll-cue" aria-label="Scroll to products"><span></span></a>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="marquee" aria-label="Brands">
+      <div class="marquee__track">
+        <span>Levi's</span><span>Puma</span><span>Ray-Ban</span><span>Fossil</span><span>HRX</span><span>Van Heusen</span><span>Mochi</span><span>Forever New</span><span>Roadster</span><span>Lavie</span>
+        <span>Levi's</span><span>Puma</span><span>Ray-Ban</span><span>Fossil</span><span>HRX</span><span>Van Heusen</span><span>Mochi</span><span>Forever New</span><span>Roadster</span><span>Lavie</span>
+      </div>
+    </section>
+
+    <!-- SCROLL ZOOM FEATURE -->
+    <section class="zoom" id="zoom">
+      <div class="zoom__sticky">
+        <div class="zoom__frame">
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1800&q=80" alt="Model in autumn layers" />
+        </div>
+        <div class="zoom__caption">
+          <h2>Layers that<br />move with you.</h2>
+          <p>Fresh drops every week from the stores you already love.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section class="shop" id="shop">
+      <div class="section-head reveal">
+        <p class="eyebrow">Shop the edit</p>
+        <h2>Picked for you.</h2>
+      </div>
+
+      <div class="controls reveal">
+        <div class="segmented" role="tablist" aria-label="Filter by store" id="storeFilter">
+          <span class="segmented__thumb" aria-hidden="true"></span>
+          <button role="tab" aria-selected="true" data-store="all">All</button>
+          <button role="tab" aria-selected="false" data-store="myntra">Myntra</button>
+          <button role="tab" aria-selected="false" data-store="amazon">Amazon</button>
+          <button role="tab" aria-selected="false" data-store="ajio">AJIO</button>
+        </div>
+        <div class="chips" id="categoryFilter" aria-label="Filter by category"></div>
+      </div>
+
+      <div class="grid" id="grid" aria-live="polite"></div>
+      <p class="empty" id="empty" hidden>Nothing here yet — try another filter.</p>
+    </section>
+
+    <!-- TRENDING CAROUSEL -->
+    <section class="trending" id="trending">
+      <div class="section-head section-head--row reveal">
+        <div>
+          <p class="eyebrow">Biggest savings</p>
+          <h2>Trending deals.</h2>
+        </div>
+        <div class="carousel-nav">
+          <button class="circle-btn" data-dir="-1" aria-label="Previous">&#8249;</button>
+          <button class="circle-btn" data-dir="1" aria-label="Next">&#8250;</button>
+        </div>
+      </div>
+      <div class="carousel" id="carousel"></div>
+    </section>
+
+    <!-- STORES -->
+    <section class="stores" id="stores">
+      <div class="section-head reveal">
+        <p class="eyebrow">Shop by store</p>
+        <h2>Three stores. One edit.</h2>
+      </div>
+      <div class="stores__grid" id="storeTiles"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__disclosure">
+      <strong>Affiliate disclosure:</strong> Gotham Edit participates in the Amazon Associates Program and other
+      affiliate programs (Myntra, AJIO). As an Amazon Associate we earn from qualifying purchases. Prices and
+      availability are set by each retailer and may change — always check the store before buying.
+    </p>
+    <p class="footer__copy">© <span id="year"></span> Gotham Edit. Product names and logos belong to their respective owners.</p>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
