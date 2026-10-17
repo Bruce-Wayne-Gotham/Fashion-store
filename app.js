@@ -42,8 +42,12 @@
     img.loading = "lazy";
     img.decoding = "async";
     img.addEventListener("load", () => img.classList.add("is-loaded"));
-    img.addEventListener("error", () => img.remove());
-    img.src = p.image;
+    img.addEventListener("error", () => {
+      // Fall back to the bundled illustration (e.g. AI image not generated yet).
+      if (p.art && !img.src.endsWith(p.art)) img.src = p.art;
+      else img.remove();
+    });
+    img.src = p.image || p.art;
     media.append(img);
     if (p.badge) media.append(el("span", "badge", p.badge));
     const pill = el("span", "store-pill", store.name);

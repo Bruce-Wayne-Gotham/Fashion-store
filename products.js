@@ -9,8 +9,9 @@
  *  3. PRODUCTS: paste the affiliate deep link you generated for each product
  *     (Amazon SiteStripe, Myntra/Ajio via EarnKaro, Cuelinks, Admitad, etc.)
  *     into `url`. `image` can be a product photo URL from the store, or one of
- *     the bundled illustrations in images/ (used by default so the page always
- *     has visuals, even offline).
+ *     the bundled illustrations in images/. If `image` fails to load, the card
+ *     falls back to `art`. Myntra/AJIO products point at AI images in images/ai/
+ *     — create them with tools/generate-ai-images.py (see README).
  *
  *  Anything still pointing at a plain store URL will work, it just won't earn.
  */
@@ -48,7 +49,8 @@ window.AFFILIATE_CONFIG = {
       price: 1199,
       mrp: 2399,
       badge: "Bestseller",
-      image: "images/linen-shirt.svg",
+      image: "images/ai/linen-shirt.png",
+      art: "images/linen-shirt.svg",
       url: "https://www.myntra.com/shirts",
     },
     {
@@ -59,7 +61,8 @@ window.AFFILIATE_CONFIG = {
       price: 1349,
       mrp: 2999,
       badge: "New",
-      image: "images/wrap-dress.svg",
+      image: "images/ai/wrap-dress.png",
+      art: "images/wrap-dress.svg",
       url: "https://www.myntra.com/dresses",
     },
     {
@@ -92,7 +95,8 @@ window.AFFILIATE_CONFIG = {
       price: 2799,
       mrp: 4599,
       badge: "Trending",
-      image: "images/denim-jacket.svg",
+      image: "images/ai/denim-jacket.png",
+      art: "images/denim-jacket.svg",
       url: "https://www.ajio.com/s/denim-jackets",
     },
     {
@@ -103,7 +107,8 @@ window.AFFILIATE_CONFIG = {
       price: 1599,
       mrp: 3199,
       badge: "New",
-      image: "images/knit-coord.svg",
+      image: "images/ai/knit-coord.png",
+      art: "images/knit-coord.svg",
       url: "https://www.ajio.com/s/co-ords",
     },
     {
@@ -125,7 +130,8 @@ window.AFFILIATE_CONFIG = {
       price: 899,
       mrp: 1999,
       badge: "Value",
-      image: "images/crew-tees.svg",
+      image: "images/ai/crew-tees.png",
+      art: "images/crew-tees.svg",
       url: "https://www.myntra.com/tshirts",
     },
     {
@@ -136,7 +142,8 @@ window.AFFILIATE_CONFIG = {
       price: 1490,
       mrp: 2490,
       badge: "",
-      image: "images/block-mules.svg",
+      image: "images/ai/block-mules.png",
+      art: "images/block-mules.svg",
       url: "https://www.ajio.com/s/women-heels",
     },
     {
@@ -147,7 +154,8 @@ window.AFFILIATE_CONFIG = {
       price: 5590,
       mrp: 7990,
       badge: "Premium",
-      image: "images/aviator-sunglasses.svg",
+      image: "images/ai/aviator-sunglasses.png",
+      art: "images/aviator-sunglasses.svg",
       url: "https://www.myntra.com/sunglasses",
     },
     {
@@ -169,7 +177,8 @@ window.AFFILIATE_CONFIG = {
       price: 2199,
       mrp: 4399,
       badge: "",
-      image: "images/satin-skirt.svg",
+      image: "images/ai/satin-skirt.png",
+      art: "images/satin-skirt.svg",
       url: "https://www.ajio.com/s/skirts",
     },
   ],

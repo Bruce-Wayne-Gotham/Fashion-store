@@ -30,6 +30,28 @@ Add or remove products by copying an entry in `PRODUCTS`. `store` must be `myntr
 
 All outbound links open in a new tab with `rel="sponsored noopener noreferrer"`.
 
+## AI product images (Myntra & AJIO)
+
+Myntra and AJIO products load AI images from `images/ai/`. Until those files exist, each card shows its bundled illustration (`art` in `products.js`). Amazon products keep illustrations. Swap in Amazon's own product photos (SiteStripe / PA-API) rather than AI images, because Amazon Associates requires them.
+
+**Option A: AI Studio website (no code)**
+1. Open [aistudio.google.com](https://aistudio.google.com) and choose an image-generation model.
+2. For each entry in `tools/ai-image-prompts.json`, paste the item prompt followed by the `style` line.
+3. Download each result as `images/ai/<name>.png` (e.g. `images/ai/denim-jacket.png`).
+
+**Option B: script (all 8 in one go)**
+```bash
+pip install google-genai
+export GEMINI_API_KEY="your key from https://aistudio.google.com/apikey"
+python3 tools/generate-ai-images.py                       # creates missing images
+python3 tools/generate-ai-images.py wrap-dress            # redo one you don't like
+python3 tools/generate-ai-images.py --model <newer-model> # pick a newer image model
+```
+
+Then commit the `images/ai/` folder. Never commit your API key.
+
+Tip: AI images won't exactly match the item being sold. Make sure each picture is close to the real product so shoppers aren't surprised.
+
 ## Run locally
 
 ```bash
