@@ -39,6 +39,7 @@ PROMPTS = ROOT / "tools" / "ai-image-prompts.json"
 OUT_DIR = ROOT / "images" / "ai"
 WIDTH, HEIGHT = 896, 1120  # 4:5, multiples of 16 for FLUX
 HF_MODEL = os.environ.get("HF_IMAGE_MODEL", "black-forest-labs/FLUX.1-schnell")
+HF_PROVIDER = os.environ.get("HF_PROVIDER") or "auto"  # e.g. hf-inference, fal-ai, nscale, together
 GEMINI_MODEL = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
 
 
@@ -58,7 +59,7 @@ def huggingface(prompt):
     token = os.environ.get("HF_TOKEN")
     if not token:
         raise RuntimeError("HF_TOKEN is not set")
-    client = InferenceClient(provider="auto", api_key=token)
+    client = InferenceClient(provider=HF_PROVIDER, api_key=token)
     image = client.text_to_image(prompt, model=HF_MODEL, width=WIDTH, height=HEIGHT)
     buf = io.BytesIO()
     image.save(buf, "PNG")

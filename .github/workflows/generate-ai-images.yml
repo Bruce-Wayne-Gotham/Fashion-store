@@ -21,6 +21,10 @@ on:
         type: choice
         options: [auto, huggingface, pollinations, gemini]
         default: auto
+      hf_provider:
+        description: "Hugging Face inference provider (blank = auto)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -49,6 +53,7 @@ jobs:
           NAMES: ${{ inputs.names }}
           FORCE: ${{ inputs.force }}
           PROVIDER: ${{ inputs.provider }}
+          HF_PROVIDER: ${{ inputs.hf_provider }}
         run: |
           args=(--provider "${PROVIDER:-auto}")
           [ "$FORCE" = "true" ] && args+=(--force)
