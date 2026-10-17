@@ -1,0 +1,67 @@
+name: Generate AI images
+
+# Run from the Actions tab → "Generate AI images" → Run workflow.
+# Needs a repository secret named GEMINI_API_KEY (Settings → Secrets and variables → Actions).
+on:
+  workflow_dispatch:
+    inputs:
+      names:
+        description: "Only these images, space-separated (blank = all missing)"
+        required: false
+        default: ""
+      force:
+        description: "Regenerate images that already exist"
+        type: boolean
+        default: false
+      model:
+        description: "Gemini image model (blank = script default)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-ai-images
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install google-genai
+
+      - name: Generate images
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NAMES: ${{ inputs.names }}
+          FORCE: ${{ inputs.force }}
+          MODEL: ${{ inputs.model }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::error::Add a repository secret named GEMINI_API_KEY first."
+            exit 1
+          fi
+          args=()
+          [ "$FORCE" = "true" ] && args+=(--force)
+          [ -n "$MODEL" ] && args+=(--model "$MODEL")
+          # shellcheck disable=SC2086
+          python3 tools/generate-ai-images.py "${args[@]}" $NAMES
+
+      - name: Commit new images
+        run: |
+          git add images/ai
+          if git diff --cached --quiet; then
+            echo "No new images to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Add AI-generated product images"
+          git push

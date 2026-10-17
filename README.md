@@ -50,6 +50,11 @@ python3 tools/generate-ai-images.py --model <newer-model> # pick a newer image m
 
 Then commit the `images/ai/` folder. Never commit your API key.
 
+**Option C: GitHub Actions (key stays in GitHub)**
+1. Repo **Settings → Secrets and variables → Actions → New repository secret**: name `GEMINI_API_KEY`, value = your key.
+2. **Actions** tab → **Generate AI images** → **Run workflow**. Leave the fields blank to create all missing images. Optionally list specific names, tick "force" to redo them, or set a newer model.
+3. The workflow commits the new images to `images/ai/` on the branch it ran on.
+
 Tip: AI images won't exactly match the item being sold. Make sure each picture is close to the real product so shoppers aren't surprised.
 
 ## Run locally
