@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Diwali Edit — Gotham Edit</title>
+  <meta name="description" content="Festive Diwali picks — sarees, lehengas, kurtas, sherwanis, jewellery and diya decor from Myntra, AJIO and Amazon." />
+  <meta name="theme-color" content="#14060f" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="diwali.css" />
+</head>
+<body class="diwali">
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Gotham Edit home">Gotham&nbsp;<span>Edit</span></a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#shop">Festive edit</a>
+        <a href="#trending">Diwali deals</a>
+        <a href="#stores">Stores</a>
+        <a href="index.html">Everyday</a>
+      </nav>
+      <a href="#shop" class="btn btn--small">Shop Diwali</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero dhero" id="hero">
+      <canvas class="fireworks" id="fireworks" aria-hidden="true"></canvas>
+      <div class="lanterns" id="lanterns" aria-hidden="true"></div>
+      <div class="rangoli-bg" id="rangoliBg" aria-hidden="true"></div>
+
+      <div class="hero__copy">
+        <p class="eyebrow reveal"><span lang="hi">शुभ दीपावली</span> · Diwali 2026</p>
+        <h1 class="hero__title reveal">Light up<br /><span class="gold-text">every celebration.</span></h1>
+        <p class="hero__sub reveal">Sarees, lehengas, kurtas, sherwanis, jhumkas and diyas — the festive edit from Myntra, AJIO and Amazon.</p>
+        <div class="hero__cta reveal">
+          <a href="#shop" class="btn btn--gold">Shop the festive edit</a>
+          <span class="countdown" id="countdown" hidden></span>
+        </div>
+      </div>
+
+      <div class="hero__stage" aria-hidden="true">
+        <figure class="float float--a" data-depth="0.18"><img src="images/ai/diwali-anarkali.png" data-fallback="images/diwali/rangoli.svg" alt="" /></figure>
+        <figure class="float float--b" data-depth="0.32"><img src="images/ai/diwali-silk-kurta.png" data-fallback="images/diwali/lantern.svg" alt="" /></figure>
+        <figure class="float float--c" data-depth="0.1"><img src="images/ai/diwali-lehenga.png" data-fallback="images/diwali/diya.svg" alt="" /></figure>
+        <figure class="float float--d" data-depth="0.26"><img src="images/ai/diwali-jhumkas.png" data-fallback="images/diwali/lantern.svg" alt="" /></figure>
+      </div>
+
+      <div class="diya-row" id="diyaRow" aria-hidden="true"></div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="marquee" aria-label="Festive collections">
+      <div class="marquee__track">
+        <span>Sarees</span><span>✦</span><span>Lehengas</span><span>✦</span><span>Kurta sets</span><span>✦</span><span>Sherwanis</span><span>✦</span><span>Jhumkas</span><span>✦</span><span>Juttis</span><span>✦</span><span>Diyas</span><span>✦</span><span>Rangoli</span><span>✦</span>
+        <span>Sarees</span><span>✦</span><span>Lehengas</span><span>✦</span><span>Kurta sets</span><span>✦</span><span>Sherwanis</span><span>✦</span><span>Jhumkas</span><span>✦</span><span>Juttis</span><span>✦</span><span>Diyas</span><span>✦</span><span>Rangoli</span><span>✦</span>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section class="shop" id="shop">
+      <div class="section-head reveal">
+        <p class="eyebrow">The festive edit</p>
+        <h2>Dressed for <span class="gold-text">Diwali.</span></h2>
+      </div>
+
+      <div class="controls reveal">
+        <div class="segmented" role="tablist" aria-label="Filter by store" id="storeFilter">
+          <span class="segmented__thumb" aria-hidden="true"></span>
+          <button role="tab" aria-selected="true" data-store="all">All</button>
+          <button role="tab" aria-selected="false" data-store="myntra">Myntra</button>
+          <button role="tab" aria-selected="false" data-store="amazon">Amazon</button>
+          <button role="tab" aria-selected="false" data-store="ajio">AJIO</button>
+        </div>
+        <div class="chips" id="categoryFilter" aria-label="Filter by category"></div>
+      </div>
+
+      <div class="grid" id="grid" aria-live="polite"></div>
+      <p class="empty" id="empty" hidden>Nothing here yet — try another filter.</p>
+    </section>
+
+    <!-- BANNER -->
+    <section class="dbanner reveal" aria-label="Light up your home">
+      <div class="dbanner__inner">
+        <div>
+          <p class="eyebrow">For your home</p>
+          <h2>Diyas, lanterns<br />&amp; rangoli.</h2>
+          <p class="dbanner__sub">Everything to make the house glow — from brass diyas to akash kandils.</p>
+          <button type="button" class="btn btn--gold" id="decorBtn">Shop decor</button>
+        </div>
+        <img src="images/diwali/diya.svg" alt="Glowing brass diyas" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- TRENDING CAROUSEL -->
+    <section class="trending" id="trending">
+      <div class="section-head section-head--row reveal">
+        <div>
+          <p class="eyebrow">Biggest festive savings</p>
+          <h2>Diwali deals.</h2>
+        </div>
+        <div class="carousel-nav">
+          <button class="circle-btn" data-dir="-1" aria-label="Previous">&#8249;</button>
+          <button class="circle-btn" data-dir="1" aria-label="Next">&#8250;</button>
+        </div>
+      </div>
+      <div class="carousel" id="carousel"></div>
+    </section>
+
+    <!-- STORES -->
+    <section class="stores" id="stores">
+      <div class="section-head reveal">
+        <p class="eyebrow">Festive sales</p>
+        <h2>Shop by store.</h2>
+      </div>
+      <div class="stores__grid" id="storeTiles"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__disclosure">
+      <strong>Affiliate disclosure:</strong> Gotham Edit participates in the Amazon Associates Program and other
+      affiliate programs (Myntra, AJIO). As an Amazon Associate we earn from qualifying purchases. Prices and
+      availability are set by each retailer and may change — always check the store before buying.
+    </p>
+    <p class="footer__copy">© <span id="year"></span> Gotham Edit. Product names and logos belong to their respective owners.</p>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="diwali-products.js"></script>
+  <script src="app.js"></script>
+  <script src="diwali.js"></script>
+</body>
+</html>

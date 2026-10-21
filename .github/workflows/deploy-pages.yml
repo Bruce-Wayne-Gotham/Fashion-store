@@ -30,7 +30,7 @@ jobs:
       - name: Collect site files
         run: |
           mkdir _site
-          cp index.html styles.css app.js products.js _site/
+          cp ./*.html ./*.css ./*.js _site/
           cp -r images _site/
           touch _site/.nojekyll
 

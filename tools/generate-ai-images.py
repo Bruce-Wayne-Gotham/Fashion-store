@@ -148,7 +148,12 @@ def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     failed = []
 
-    for name, prompt in spec["images"].items():
+    for name, entry in spec["images"].items():
+        # An entry is a prompt string (default style) or {"prompt", "style"} naming one of spec["styles"].
+        if isinstance(entry, dict):
+            prompt, style = entry["prompt"], spec["styles"][entry["style"]]
+        else:
+            prompt, style = entry, spec["style"]
         out = OUT_DIR / f"{name}.png"
         if args.names and name not in args.names:
             continue
@@ -159,7 +164,7 @@ def main():
         print(f"create {name} ...", flush=True)
         for provider in chain:
             try:
-                data = PROVIDERS[provider](f"{prompt} {spec['style']}")
+                data = PROVIDERS[provider](f"{prompt} {style}")
             except Exception as err:  # keep going so one failure doesn't stop the batch
                 print(f"  {provider} failed: {err}", flush=True)
                 continue

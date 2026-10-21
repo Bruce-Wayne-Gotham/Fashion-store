@@ -226,14 +226,16 @@
           f.style.transform = `translate3d(0, ${-y * depth}px, 0)`;
         });
       }
-      // Apple-style expanding image
-      const r = zoom.getBoundingClientRect();
-      const t = clamp(-r.top / (r.height - vh));
-      const ease = 1 - Math.pow(1 - clamp(t / 0.6), 3);
-      zoomFrame.style.setProperty("--inset", `${18 * (1 - ease)}%`);
-      zoomFrame.style.setProperty("--zr", `${40 * (1 - ease)}px`);
-      zoomImg.style.setProperty("--zs", (1.25 - 0.25 * ease).toFixed(4));
-      zoomCap.style.setProperty("--co", clamp((t - 0.45) / 0.25).toFixed(3));
+      // Apple-style expanding image (not every page has one)
+      if (zoom) {
+        const r = zoom.getBoundingClientRect();
+        const t = clamp(-r.top / (r.height - vh));
+        const ease = 1 - Math.pow(1 - clamp(t / 0.6), 3);
+        zoomFrame.style.setProperty("--inset", `${18 * (1 - ease)}%`);
+        zoomFrame.style.setProperty("--zr", `${40 * (1 - ease)}px`);
+        zoomImg.style.setProperty("--zs", (1.25 - 0.25 * ease).toFixed(4));
+        zoomCap.style.setProperty("--co", clamp((t - 0.45) / 0.25).toFixed(3));
+      }
     }
     ticking = false;
   }
@@ -254,7 +256,11 @@
 
   // Hero images fail gracefully
   document.querySelectorAll(".float img, .zoom__frame img").forEach((img) => {
-    const hide = () => (img.style.visibility = "hidden");
+    const fallback = img.dataset.fallback;
+    const hide = () => {
+      if (fallback && !img.src.endsWith(fallback)) img.src = fallback;
+      else img.style.visibility = "hidden";
+    };
     if (img.complete && img.naturalWidth === 0) hide();
     else img.addEventListener("error", hide);
   });

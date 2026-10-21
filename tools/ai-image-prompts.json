@@ -9,6 +9,65 @@
     "denim-jacket": "A relaxed-fit men's mid-blue denim trucker jacket, two buttoned chest pockets, copper buttons, contrast stitching, slightly faded wash. Background: soft powder blue gradient.",
     "knit-coord": "A women's ribbed knit co-ord set in oatmeal beige: a cropped strappy knit top above matching wide-leg ribbed knit trousers, laid out together. Background: light warm stone gradient.",
     "block-mules": "A pair of women's tan brown leather block-heel mules with a cream padded strap across the toe, open back, side view. Background: soft peach gradient.",
-    "satin-skirt": "A women's lilac pleated satin midi skirt with an elastic waistband, glossy fabric catching the light, crisp fine pleats. Background: pale lavender gradient."
+    "satin-skirt": "A women's lilac pleated satin midi skirt with an elastic waistband, glossy fabric catching the light, crisp fine pleats. Background: pale lavender gradient.",
+    "diwali-banarasi-saree": {
+      "prompt": "A Banarasi silk saree in deep crimson red with an intricate gold zari border and woven gold buttis, elegantly folded and draped to show the pallu.",
+      "style": "diwali"
+    },
+    "diwali-lehenga": {
+      "prompt": "An embroidered lehenga choli set in rani pink and gold, flared skirt with dense zari and sequin embroidery, matching blouse and a sheer dupatta, displayed on an invisible form.",
+      "style": "diwali"
+    },
+    "diwali-anarkali": {
+      "prompt": "A flared anarkali kurta in emerald green with gold gota-patti work at the yoke and hem, with a matching golden dupatta, displayed on an invisible form.",
+      "style": "diwali"
+    },
+    "diwali-chanderi-kurta": {
+      "prompt": "A straight chanderi silk kurta set in soft mustard yellow with delicate gold block print, matching palazzo trousers, neatly laid out.",
+      "style": "diwali"
+    },
+    "diwali-silk-kurta": {
+      "prompt": "A men's silk blend kurta in ivory with subtle gold thread embroidery on the collar and placket, with matching churidar pyjama, displayed on an invisible form.",
+      "style": "diwali"
+    },
+    "diwali-sherwani": {
+      "prompt": "A men's embroidered sherwani in royal navy blue with antique gold zardozi embroidery and a mandarin collar, knee length, displayed on an invisible form.",
+      "style": "diwali"
+    },
+    "diwali-nehru-jacket": {
+      "prompt": "A men's brocade Nehru jacket in maroon with a woven gold paisley pattern, mandarin collar and gold buttons.",
+      "style": "diwali"
+    },
+    "diwali-jhumkas": {
+      "prompt": "A pair of kundan gold-plated jhumka earrings with red and green stones and tiny pearl drops, close-up on a velvet stand.",
+      "style": "diwali"
+    },
+    "diwali-potli": {
+      "prompt": "An embroidered silk potli bag in magenta with gold zari work, drawstring tassels and a beaded handle.",
+      "style": "diwali"
+    },
+    "diwali-mojaris": {
+      "prompt": "A pair of men's embroidered leather mojaris in tan with gold thread work and a curled toe, side view.",
+      "style": "diwali"
+    },
+    "diwali-juttis": {
+      "prompt": "A pair of women's embellished punjabi juttis in red velvet with gold embroidery and small mirror work, side view.",
+      "style": "diwali"
+    },
+    "diwali-brass-diyas": {
+      "prompt": "A set of six handcrafted brass diyas with engraved patterns, each with a small glowing flame, arranged in a gentle arc.",
+      "style": "diwali"
+    },
+    "diwali-akash-kandil": {
+      "prompt": "A traditional hanging paper akash kandil lantern, star shaped, in red and orange with golden trim and paper tassels, glowing softly from inside.",
+      "style": "diwali"
+    },
+    "diwali-rangoli-kit": {
+      "prompt": "A rangoli colours kit: ten small open bowls of bright powdered colours (pink, orange, yellow, green, blue, purple, red, white) arranged neatly, with a small finished rangoli flower pattern beside them.",
+      "style": "diwali"
+    }
+  },
+  "styles": {
+    "diwali": "Premium festive e-commerce studio product photograph, the product shown alone with no person, model or mannequin, centered, softly lit, rich deep maroon background with warm golden bokeh from glowing diya lamps, subtle marigold accents at the edges, gentle realistic shadow, luxurious Indian festive mood, ultra sharp fabric and embroidery detail, photorealistic, no text, no logos, no watermark, portrait 4:5 framing."
   }
 }
